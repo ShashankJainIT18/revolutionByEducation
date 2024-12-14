@@ -18,13 +18,14 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter")
+	implementation("org.springframework.boot:spring-boot-starter-data-jpa")
+	implementation("org.springframework.boot:spring-boot-starter-web")
+	compileOnly("org.projectlombok:lombok")
+	runtimeOnly("com.mysql:mysql-connector-j")
+	annotationProcessor("org.projectlombok:lombok")
 	testImplementation("org.springframework.boot:spring-boot-starter-test")
 	testRuntimeOnly("org.junit.platform:junit-platform-launcher")
-	implementation("org.springframework:spring-web:6.2.1")
-	implementation("org.springframework.boot:spring-boot-starter-data-jpa:3.4.0")
-	compileOnly("org.projectlombok:lombok:1.18.36")
-	implementation("com.mysql:mysql-connector-j:9.1.0")
+	implementation("io.jsonwebtoken:jjwt-api:0.12.6")
 
 }
 
