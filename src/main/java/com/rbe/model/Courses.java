@@ -2,9 +2,11 @@ package com.rbe.model;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import lombok.NoArgsConstructor;
 
 @Entity
 @Data
+@NoArgsConstructor
 @Table(name = "courses")
 public class Courses {
     @Id
@@ -15,11 +17,9 @@ public class Courses {
 
     private String description;
 
-    private String type;
-
     private String duration;
 
-    private double amount;
+    private double price;
 
     private String status;
 }
