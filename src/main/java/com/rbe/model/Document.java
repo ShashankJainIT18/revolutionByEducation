@@ -1,6 +1,7 @@
 package com.rbe.model;
 
 import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.CreationTimestamp;
@@ -8,40 +9,34 @@ import org.hibernate.annotations.UpdateTimestamp;
 
 import java.time.LocalDateTime;
 
-@Table(name = "documents")
+@Table(name = "document")
 @Entity
-@Data
-@NoArgsConstructor
-public class Documents {
+@AllArgsConstructor
+public class Document {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    Long id;
+    public Long id;
     @Column(nullable = false)
-    String title;
-    String description;
+    public String title;
+    public String description;
     @Column(name = "file_type")
-    String fileType;
+    public String fileType;
     @Column(nullable = false)
-    DocumentStatus status;
+    @Enumerated(value = EnumType.STRING)
+    public DocumentStatus status;
     @Column(nullable = false)
-    String link;
-    Double size;
+    public String link;
+    public Double size;
     @CreationTimestamp
     @Column(nullable = false, name = "uploaded_at", updatable = false)
-    LocalDateTime uploadedAt;
+    public LocalDateTime uploadedAt;
     @UpdateTimestamp
     @Column(name = "updated_at")
-    LocalDateTime updatedAt;
+    public LocalDateTime updatedAt;
     @Column(name = "last_uploaded_by")
-    String lastUploadedBy;
+    public String lastUploadedBy;
     @Column(nullable = false, name = "document_type")
-    DocumentType documentType;
+    @Enumerated(value = EnumType.STRING)
+    public DocumentType documentType;
 }
 
-enum DocumentStatus {
-    ACTIVE, IN_ACTIVE
-}
-
-enum DocumentType {
-    SUBJECT, ANALYSIS, OTHER
-}
